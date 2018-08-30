@@ -35,45 +35,17 @@
 
 ;;; ============================================================
 
-;; Exp    ::= (match              Exp Clause)
-;;         || (trace-match        Exp Clause)
-;;         || (match+       (Id*) Exp Clause*)
-;;         || (trace-match+ (Id*) Exp Clause*)
-;;         || OtherSchemeExp
-
-;; Clause ::= (Pat Exp+) || (Pat (guard Exp*) Exp+)
-
-;; Pat    ::= (Pat ... . Pat)
-;;         || (Pat . Pat)
-;;         || ()
-;;         || #(Pat* Pat ... Pat*)
-;;         || #(Pat*)
-;;         || ,Id
-;;         || ,[Id*]
-;;         || ,[Cata -> Id*]
-;;         || Id
-
-;; Cata   ::= Exp
-
-;; YOU'RE NOT ALLOWED TO REFER TO CATA VARS IN GUARDS. (reasonable!)
-
-(module ((match+ match-help match-help1 clause-body let-values**
-           guard-body convert-pat mapper my-backquote extend-backquote
-           sexp-dispatch)
-         (trace-match+ match-help match-help1 clause-body let-values**
-           guard-body convert-pat mapper my-backquote extend-backquote
-           sexp-dispatch)
-         (match match-help match-help1 clause-body let-values**
-           guard-body convert-pat mapper my-backquote extend-backquote
-           sexp-dispatch)
-         (trace-match match-help match-help1 clause-body let-values**
-           guard-body convert-pat mapper my-backquote extend-backquote
-           sexp-dispatch)
-         (with-ellipsis-aware-quasiquote my-backquote)
-         match-equality-test)
-
-(import scheme)
-
+(library (match match)
+    (export
+        match
+        match+
+        trace-match
+        trace-match+
+    )
+    (import
+        (scheme))
+ 
+ 
 (define match-equality-test
   (make-parameter
     equal?
