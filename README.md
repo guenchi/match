@@ -1,6 +1,10 @@
 # match
 Dan Friedman, Erik Hilsdale and Kent Dybvig's match
 
+
+$ raven install match
+
+
 ```
  Exp    ::= (match              Exp Clause)
          || (trace-match        Exp Clause)
