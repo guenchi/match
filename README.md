@@ -27,6 +27,24 @@ Just remenber if you use symbol or number or char, that fix there want has to be
 
 and the ,x ,y means it can be anything. you can call it as the last ,x in `((a ,x ,y) ,x)`, which means it back the value of x if match.
 
+and maybe you want the x must be symbol, then do this:
+
+```
+(match '(a 1 2)
+    ((a ,x ,y) (guard (symbol? x)) ,y))
+``` 
+(guard) need a boolean, if true this phrase match, and false not. although the list is match, but (guard) have one vote veto power, like the five permanent member in the United Nations.
+
+The amazing thing is you can nesting the match:
+if we define:
+```
+(define Expr
+    (lambda (x)
+        (match x
+            ((a ,x) ,x))))
+```
+then we can use it like this: `
+
 
 
 ```
