@@ -38,13 +38,18 @@ and maybe you want the x must be symbol, then do this:
 The amazing thing is you can nesting the match:
 if we define:
 ```
-(define Expr
+(define Expl
     (lambda (x)
         (match x
             ((a ,x) ,x))))
 ```
-then we can use it like this: `
-
+then we can use it like this: `,(Expr -> e)`
+so:
+```
+(match '(a (a 3) 2)
+    ((a ,(Expl -> e) ,y)  ,e))
+```
+it will return 3. Notice that in `,(Expr -> e)` the e is not unquote and has unquote when we call it.
 
 
 ```
