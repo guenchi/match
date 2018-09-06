@@ -120,7 +120,7 @@
           [(,[rator] ,[rand*] ...) `(,rator ,rand* ...)]
           [,other (error 'parse "invalid expression ~s" other)])))
     (Prog x)))
-;;; (parse '(program (set! x 3) (+ x 4)))) => (begin (set! x 3) (+ x 4))
+(parse '(program (set! x 3) (+ x 4)))) => (begin (set! x 3) (+ x 4))
 
 ;; CHANGELOG
 
@@ -154,19 +154,19 @@
 ;; using the value of the parameter match-equality-test, which defaults
 ;; to equal?.
 ;;
-;; > (match '(1 2 1 2 1)
-;;     [(,a ,b ,a ,b ,a) (guard (number? a) (number? b)) (+ a b)])
-;; 3
-;; ;;
-;; > (match '((1 2 3) 5 (1 2 3))
-;;     [((,a ...) ,b (,a ...)) `(,a ... ,b)])
-;; (1 2 3 5)
-;; ;;
-;; > (parameterize ([match-equality-test (lambda (x y) (equal? x (reverse y)))])
-;;     (match '((1 2 3) (3 2 1))   
-;;       [(,a ,a) 'yes]
-;;       [,oops 'no]))
-;; yes
+> (match '(1 2 1 2 1)
+    [(,a ,b ,a ,b ,a) (guard (number? a) (number? b)) (+ a b)])
+3
+
+> (match '((1 2 3) 5 (1 2 3))
+    [((,a ...) ,b (,a ...)) `(,a ... ,b)])
+(1 2 3 5)
+
+> (parameterize ([match-equality-test (lambda (x y) (equal? x (reverse y)))])
+    (match '((1 2 3) (3 2 1))   
+      [(,a ,a) 'yes]
+      [,oops 'no]))
+yes
 
 ;; [10 Jan 2002]
 ;; eh fixed bug that caused (match '((1 2 3 4)) (((,a ... ,d) . ,x) a)) to
@@ -221,11 +221,11 @@
 ;; Fixed backquote so it can handle nested backquote (oops).
 ;; Double-backquoted elipses are neutralized just as double-backquoted
 ;; unquotes are.  So:
-;;   `(a ,'(1 2 3) ... b)    =eval=> (a 1 2 3 b)
-;;   ``(a ,'(1 2 3) ... b)   =eval=> `(a ,'(1 2 3) ... b)
-;;   ``(a ,(,(1 2 3) ...) b) =eval=> `(a ,(1 2 3) b)
+  `(a ,'(1 2 3) ... b)    =eval=> (a 1 2 3 b)
+  ``(a ,'(1 2 3) ... b)   =eval=> `(a ,'(1 2 3) ... b)
+  ``(a ,(,(1 2 3) ...) b) =eval=> `(a ,(1 2 3) b)
 ;; Added support for
-;;   `((unquote-splicing x y z) b) =expand==> (append x y z (list 'b))
+  `((unquote-splicing x y z) b) =expand==> (append x y z (list 'b))
 
 ;; [1 Feb 2000]
 ;; Fixed a bug involving forgetting to quote stuff in the revised backquote.
