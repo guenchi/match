@@ -1,17 +1,31 @@
 # match
-Dan Friedman, Erik Hilsdale and Kent Dybvig's match
+Dan Friedman, Erik Hilsdale and Kent Dybvig
 
 This is a pioneering work by Dan Friedman, Erik Hilsdale and Kent Dybvig that brings pattern matching to Scheme.
 
 It runs amazingly, and I think learning how to use it is a must-have for all Scheme users.
 
-***install:***
+***Install:***
 
 `raven install match`
 
+***How to use:***
 
+First of all, you have to know (match) accept a list, and matching it with you set:
 
+You can simply use it like this:
 
+```
+(match '(a 1 2)
+    ((a ,x ,y) ,x))
+```    
+`(a ,x ,y)` this phrase means, match the list with a symbol 'a, the car of list must be 'a not 'b or 'c.
+
+you can write `(1 ,x ,y)` if you want to designation car to 1. or any number, or in place of cadr and caddr.
+
+Just remenber if you use symbol or number or char, that fix there want has to be.
+
+and the ,x ,y means it can be anything. you can call it as the last ,x in `((a ,x ,y) ,x)`, which means it back the value of x if match.
 
 
 
