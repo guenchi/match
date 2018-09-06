@@ -58,7 +58,13 @@ so:
 (match '(a (a 3) 2)
     ((a ,(Expl -> e) ,y)  ,e))
 ```
-it will return 3. Notice that in `,(Expr -> e)` the e is not unquote and has unquote when we call it.
+it will return 3.
+
+`,(Expr -> e)` test the second element and it can call by ,e.
+
+Notice that in `,(Expr -> e)` the e is not unquote and has unquote when we call it.
+
+
 
 
 ```
