@@ -36,6 +36,13 @@ and maybe you want the x must be symbol, then do this:
 
 it can also accept ...
 
+```
+(match '(a 1 2 3)
+    ((a ,x ...) `(,x ...)))
+```    
+the ... means accept any number of x, the second mean return all what it got.
+
+so it will return '(1 2 3) and '(1 2 3 4 5) for '(a 1 2 3 4 5).
 
 The amazing thing is you can nesting the match:
 if we define:
