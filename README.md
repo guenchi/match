@@ -1,7 +1,6 @@
 # match
-Dan Friedman, Erik Hilsdale and Kent Dybvig
 
-This is a pioneering work by Dan Friedman, Erik Hilsdale and Kent Dybvig that brings pattern matching to Scheme.
+This is a pioneering work by ***Dan Friedman***, ***Erik Hilsdale*** and ***Kent Dybvig*** that brings pattern matching to Scheme.
 
 It runs amazingly, and I think learning how to use it is a must-have for all Scheme users.
 
