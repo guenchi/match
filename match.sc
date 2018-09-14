@@ -37,6 +37,7 @@
 
 (library (match match)
     (export
+        ->
         match
         match+
         trace-match
@@ -44,6 +45,9 @@
     )
     (import
         (scheme))
+ 
+ 
+(define ->) 
  
  
 (define match-equality-test
