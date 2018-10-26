@@ -47,7 +47,7 @@
         (scheme))
  
  
-(define ->) 
+(define-syntax -> (syntax-rules ()))
  
  
 (define match-equality-test
